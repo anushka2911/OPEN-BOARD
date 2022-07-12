@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenBoard</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="sticky.css" />
+    <link rel="stylesheet" href="openboard.css" />
+  </head>
+  <body>      
+    <!--hamburger icon to show or hide tools-->
+    <div class="options-cont">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <!--tools = pen,eraser,sticky notes,download,undo,redo-->
+    <div class="tools-cont scale-tools">
+      <i
+        class="tooltip toolcursor fa-solid fa-pencil fa-pen fa-2x"
+        id="pencilTool"
+      >
+        <span class="tooltiptext">Marker</span>
+      </i>
+      <i class="download tooltip toolcursor fa-solid fa-download fa-2x">
+        <span class="tooltiptext">Download</span>
+      </i>
+      <i class="tooltip toolcursor fa-solid fa-eraser fa-2x eraser" id="eraserTool">
+        <span class="tooltiptext">Eraser</span>
+      </i>
+      <i class="tooltip toolcursor fa-solid fa-upload fa-2x upload">
+        <span class="tooltiptext">Upload</span>
+      </i>
+      <i class="tooltip toolcursor fa-solid fa-note-sticky fa-2x sticky-btn">
+        <span class="tooltiptext">Notes</span>
+      </i>
+      <i class="tooltip toolcursor fa-solid fa-arrow-rotate-left fa-2x">
+        <span class="tooltiptext">Undo</span>
+      </i>
+      <i class="tooltip toolcursor fa-solid fa-rotate-right fa-2x">
+        <span class="tooltiptext">Redo</span>
+      </i>
+    </div>
+    <!--pencil tools consists of width of the pen and 6 different inks of pen-->
+    <div class="pencil-tool-cont">
+      <div class="pencil-width-cont">
+        <input type="range" min="2" max="10" value="3" class="pencil-width"/>
+      </div>
+      <div class="pencil-color-cont">
+        <div class="black pencil-color"></div>
+        <div class="blue pencil-color"></div>
+        <div class="red pencil-color"></div>
+        <div class="green pencil-color"></div>
+        <div class="yellow pencil-color"></div>
+        <div class="orange pencil-color"></div>
+      </div>
+    </div>
+    <!--eraser tool consists of width of eraser-->
+    <div class="eraser-tool-cont">
+      <input type="range" min="2" max="25" value="3" class="eraser-width"/>
+    </div>
+
+    <!--It is an element tag
+    examples of tag= body tag,section tag,header tag etc
+    provides user the "space" to do drawing-->
+    <canvas></canvas>
+
+  </body>
+  <script src="openboard.js"></script>
+  <script src="sticky.js"></script>
+  <script src="upload.js"></script>
+  <script src="canvas"></script>
+</html>

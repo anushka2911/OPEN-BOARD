@@ -1,0 +1,84 @@
+let canvas=document.querySelector("canvas");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let tool=canvas.getContext("2d");
+
+let pencilColor=document.querySelectorAll(".pencil-color");
+let pencilWidthElem=document.querySelector(".pencil-width");
+let eraserWidthElem=document.querySelector(".eraser-width");
+let penColor="gray";
+let penWidth=pencilWidthElem.value;
+let eraserWidth=eraserWidthElem.value;
+
+
+let MouseDown=false;
+
+tool.strokeStyle=penColor;
+tool.lineWidth=penWidth;
+
+//when mouse is clicked
+//it will be taken as its starting point
+canvas.addEventListener("mousedown",(e)=>{
+    MouseDown=true;
+tool.beginPath();
+tool.moveTo(e.clientX,e.clientY);
+console.log("ee");
+})
+
+//when mouse is dragged or moved we fill that path with a color to make it visible
+canvas.addEventListener("mousemove",(e)=>{
+if(MouseDown==true)
+{
+    tool.strokeFill="blue";
+tool.strokeWidth=3;
+    tool.lineTo(e.clientX,e.clientY);
+tool.stroke();
+console.log(e.clientX);
+
+}
+})
+
+canvas.addEventListener("mouseup",(e)=>{
+    MouseDown=false;
+})
+
+
+//pen color
+
+pencilColor.forEach((colorElem)=>{
+colorElem.addEventListener("click",(e)=>{
+    let color=colorElem.classList[0];
+    penColor=color;
+    tool.strokeStyle=penColor;
+})
+})
+
+pencilWidthElem.addEventListener("change",(e)=>{
+    penWidth=pencilWidthElem.value;
+    tool.lineWidth=penWidth;
+})
+
+
+
+//eraser
+
+ eraserTool=document.querySelector(".eraser");
+
+eraserWidthElem.addEventListener("change",(e)=>{
+    eraserWidth=eraserWidthElem.value;
+    tool.lineWidth=penWidth;
+})
+
+eraserTool.addEventListener("click",(e)=>{
+    console.log("eraser is clicked"); 
+if(eraserToolFlag)
+{
+ tool.strokeStyle='white';
+ tool.lineWidth=eraserWidth;
+}
+else{
+    tool.strokeStyle=penColor;
+tool.lineWidth=penWidth;
+}
+})
